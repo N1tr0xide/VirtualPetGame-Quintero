@@ -73,4 +73,16 @@ public class GameManager : MonoBehaviour
 
         if (petToBeRemoved != null) _playerPets.Remove(petToBeRemoved);
     }
+
+    public string[] GetPlayerPetsNames()
+    {
+        List<string> pets = new List<string>();
+
+        foreach (var pet in _playerPets)
+        {
+            pets.Add(pet.Name);
+        }
+
+        return pets.ToArray();
+    }
 }
