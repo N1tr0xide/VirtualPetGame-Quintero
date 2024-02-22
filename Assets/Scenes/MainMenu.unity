@@ -477,7 +477,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f5d0a09a6321542b256c74fb33fcba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInputText: {fileID: 1284739803}
+  _catSprites:
+  - {fileID: 1936541495, guid: e2044ba9e00665644ac0d5506609fc8c, type: 3}
+  - {fileID: 194581038, guid: e28a8d57fb014c64d87bdba7020986ed, type: 3}
+  - {fileID: 1094464225, guid: 9940b354248e3e445ab35ab09e63ea05, type: 3}
+  - {fileID: -1141761936, guid: a53908e0e223d70458047e28fc440fb9, type: 3}
+  - {fileID: 1359433098, guid: 754b05cd572b5ac4ea24566e0f9bea16, type: 3}
+  - {fileID: 615745994, guid: a569b8a54da345b45963a92a5f3c8423, type: 3}
+  _nameInputText: {fileID: 1284739803}
 --- !u!1 &956050847
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,11 +647,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16235f04ae69cc849a6ad36205495060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPet:
-    name: 
-    fullness: 0
-    hapinness: 0
-    energy: 0
+  _playerPets: []
+  _currentPlayerPet:
+    _name: 
+    _fullness: 0
+    _happiness: 0
+    _energy: 0
+    _sprite: {fileID: 0}
 --- !u!4 &964168147
 Transform:
   m_ObjectHideFlags: 0
