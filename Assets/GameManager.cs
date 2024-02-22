@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    [SerializeField] List<Pet> playerPets = new List<Pet> { };
+
     [SerializeField] private Pet _playerPet;
 
     public Pet PlayerPet { get { return _playerPet; } }
@@ -28,18 +31,39 @@ public class GameManager : MonoBehaviour
     {
         if(!string.IsNullOrEmpty(petName))
         {
-            if(petName != _playerPet.Name)
-            {
-                _playerPet = new Pet(petName);
-                Debug.Log("New pet was created");
-                return true;
-            }
-
-            Debug.Log("Same name entered. Returned existing pet");
+            _playerPet = VerifyPetExistence(petName);
             return true;
         }
 
         Debug.Log("Invalid String");
         return false;
+    }
+
+    private Pet VerifyPetExistence(string petName)
+    {
+        foreach(var pet in playerPets) 
+        {
+            if(pet.Name == petName)
+            {
+                Debug.Log("Previous Pet Entered. Data returned");
+                return pet;
+            }
+        }
+
+        Pet newPet = new Pet(petName);
+        playerPets.Add(newPet);
+        Debug.Log("New pet was made.");
+        return newPet;
+    }
+
+    public void DeletePet(string petName)
+    {
+        foreach (var pet in playerPets)
+        {
+            if (pet.Name == petName)
+            {
+                playerPets.Remove(pet);
+            }
+        }
     }
 }

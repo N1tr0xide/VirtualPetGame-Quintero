@@ -51,8 +51,8 @@ public class Pet
     {
         name = petName;
         fullness = 50;
-        hapiness = 20;
-        energy = 50;
+        hapiness = 40;
+        energy = 100;
     }
 
     public void Eat(int byAmount)
@@ -70,12 +70,16 @@ public class Pet
         Happiness += byAmount;
     }
 
-    public IEnumerator CharacterisicsDecrease()
+    public void ChangeAllStats(int byAmount)
     {
-        yield return new WaitForSeconds(1);
-        Eat(-5);
-        Rest(-5);
-        Play(-5);
-        yield return new WaitUntil(() => fullness <= 0 || hapiness <= 0 || energy <= 0);
+        Eat(byAmount + Random.Range(-1, 2));
+        Rest(byAmount + Random.Range(-1,2));
+        Play(byAmount + Random.Range(-1, 2));
+    }
+
+    public bool IsAnyStatZero()
+    {
+        if(fullness <= 0 || hapiness <= 0 || energy <= 0) return true;
+        else return false;
     }
 }
