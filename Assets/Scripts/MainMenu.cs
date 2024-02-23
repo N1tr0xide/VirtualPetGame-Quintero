@@ -11,13 +11,14 @@ public class MainMenu : MonoBehaviour
     private GameManager _gameManager;
     [SerializeField] private Sprite[] _catSprites;
     [SerializeField] private Text _nameInputText;
-    [SerializeField] private GameObject _playerPetsPanel;
+    [SerializeField] private GameObject _playerPetsPanel, _instructionsPanel;
     [SerializeField] private Text _playerPetsText;
 
     private void Start()
     {
         _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         _playerPetsPanel.SetActive(false);
+        _instructionsPanel.SetActive(false);
     }
     
     public void GetPetButton()
@@ -30,8 +31,8 @@ public class MainMenu : MonoBehaviour
 
     public void PetsPanel()
     {
-        _playerPetsPanel.SetActive(true);
-        
+        ActivatePanel(_playerPetsPanel);
+
         String[] petsNames = _gameManager.GetPlayerPetsNames();
         string text = "";
         
@@ -41,6 +42,11 @@ public class MainMenu : MonoBehaviour
         }
 
         _playerPetsText.text = text;
+    }
+
+    public void ActivatePanel(GameObject panel)
+    {
+        panel.SetActive(true);
     }
 
     public void DeactivatePanel(GameObject panel)
